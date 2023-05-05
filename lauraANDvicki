@@ -1,3 +1,21 @@
+-- I initally entered these data types as Boolean or similar, which the app changed to tinyint. I don't 'get' tinyint yet, so I've altered them to int and varchar. Also, 
+-- employee status can be far more complex than active, inactive!
+
+ALTER TABLE orders
+MODIFY COLUMN order_status varchar (50);
+
+ALTER TABLE staff
+MODIFY COLUMN active varchar (50);
+
+ALTER TABLE staff
+MODIFY COLUMN manager_id int ;
+
+ALTER TABLE stores
+MODIFY COLUMN manager_id int ;
+
+
+
+
 CREATE database BIKESHOP;
 USE BIKESHOP;
 
