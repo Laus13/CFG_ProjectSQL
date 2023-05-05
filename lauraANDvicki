@@ -56,16 +56,19 @@ CREATE TABLE `orders`(
 );
 ALTER TABLE
     `orders` ADD PRIMARY KEY(`order_id`);
-    -- sort out foreign keys below
-ALTER TABLE
-    `stores` ADD CONSTRAINT `stores_manager_id_foreign` FOREIGN KEY(`manager_id`) REFERENCES `staff`(`manager_id`);
-ALTER TABLE
-    `orders` ADD CONSTRAINT `orders_store_id_foreign` FOREIGN KEY(`store_id`) REFERENCES `stores`(`store_id`);
-ALTER TABLE
-    `orders` ADD CONSTRAINT `orders_product_id_foreign` FOREIGN KEY(`product_id`) REFERENCES `stock`(`product_id`);
-ALTER TABLE
-    `staff` ADD CONSTRAINT `staff_store_id_foreign` FOREIGN KEY(`store_id`) REFERENCES `stores`(`store_id`);
-ALTER TABLE
-    `orders` ADD CONSTRAINT `orders_staff_id_foreign` FOREIGN KEY(`staff_id`) REFERENCES `staff`(`staff_id`);
-ALTER TABLE
-    `orders` ADD CONSTRAINT `orders_customer_id_foreign` FOREIGN KEY(`customer_id`) REFERENCES `customers`(`cust_id`);
+    -- sort out foreign keys below DONE
+
+ALTER TABLE staff 
+	ADD FOREIGN KEY(store_id) REFERENCES stores (store_id);
+    
+ALTER TABLE orders 
+	ADD FOREIGN KEY(staff_id) REFERENCES staff (staff_id);
+    
+ALTER TABLE orders 
+	ADD FOREIGN KEY(product_id) REFERENCES stock (product_id);
+    
+ALTER TABLE orders 
+	ADD FOREIGN KEY(customer_id) REFERENCES customers (cust_id);
+    
+ALTER TABLE orders 
+	ADD FOREIGN KEY(store_id) REFERENCES stores (store_id);
